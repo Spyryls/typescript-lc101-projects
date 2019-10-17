@@ -18,8 +18,6 @@ var Rocket = /** @class */ (function () {
         return this.sumMass(this.astronauts) + this.sumMass(this.cargoItems);
     };
     Rocket.prototype.canAdd = function (item) {
-        console.log(this.currentMassKg);
-        console.log(item.massKg);
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
             return true;
         }
