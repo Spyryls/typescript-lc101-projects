@@ -10,7 +10,7 @@ var Rocket = /** @class */ (function () {
     Rocket.prototype.sumMass = function (items) {
         var calculatedMass = 0;
         for (var i = 0; i < items.length; i++) {
-            calculatedMass += items[0].massKg;
+            calculatedMass += items[i].massKg;
         }
         return calculatedMass;
     };
@@ -19,8 +19,10 @@ var Rocket = /** @class */ (function () {
     };
     Rocket.prototype.canAdd = function (item) {
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
+            console.log("can add " + item.massKg + ", current mass: " + this.currentMassKg());
             return true;
         }
+        console.log("cannot add " + item.massKg + ", current mass: " + this.currentMassKg());
     };
     Rocket.prototype.addCargo = function (cargo) {
         if (this.canAdd(cargo) === true) {
