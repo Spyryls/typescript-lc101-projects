@@ -4,7 +4,7 @@ import { Astronaut } from './Astronaut';
 export class Rocket {
     name: string;
     totalCapacityKg: number;
-    cargoItems: Cargo[] = [];
+    cargoHold: Cargo[] = [];
     crewRoster: Astronaut[] = [];
 
     constructor(name: string, totalCapacityKg: number) {
@@ -22,20 +22,20 @@ export class Rocket {
     }
 
     currentMassKg(): number {
-        return this.sumMass(this.crewRoster) + this.sumMass(this.cargoItems);
+        return this.sumMass(this.crewRoster) + this.sumMass(this.cargoHold);
     }
 
     canAdd(item: Payload): boolean {
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
             console.log(`can add ${item.massKg}, current mass: ${this.currentMassKg()}`)
-            return true;
+            return true;    
         }
         console.log(`cannot add ${item.massKg}, current mass: ${this.currentMassKg()}`)
     }
 
     addCargo(cargo: Cargo): boolean {
         if (this.canAdd(cargo) === true) {
-            this.cargoItems.push(cargo);
+            this.cargoHold.push(cargo);
             console.log(cargo);
             return true;
         } else {
