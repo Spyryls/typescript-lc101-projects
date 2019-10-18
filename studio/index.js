@@ -3,16 +3,22 @@ exports.__esModule = true;
 var Astronaut_1 = require("./Astronaut");
 var Cargo_1 = require("./Cargo");
 var Rocket_1 = require("./Rocket");
-var falcon9 = new Rocket_1.Rocket('Falcon 9', 7500);
+var normandySr2 = new Rocket_1.Ship('normandySr2', 8500);
 var crewRoster = [
-    new Astronaut_1.Astronaut(75, 'Mae'),
-    new Astronaut_1.Astronaut(81, 'Sally'),
-    new Astronaut_1.Astronaut(99, 'Charles')
+    new Astronaut_1.Astronaut(75, 'EDI'),
+    new Astronaut_1.Astronaut(81, 'Shepard'),
+    new Astronaut_1.Astronaut(99, 'Liara'),
+    new Astronaut_1.Astronaut(96, "Garrus"),
+    new Astronaut_1.Astronaut(68, "Jeff"),
+    new Astronaut_1.Astronaut(74, "Cortez"),
+    new Astronaut_1.Astronaut(83, "Ashley"),
+    new Astronaut_1.Astronaut(56, "Javik"),
+    new Astronaut_1.Astronaut(113, "James")
 ];
 for (var i = 0; i < crewRoster.length; i++) {
     var astronaut = crewRoster[i];
     var status_1 = '';
-    if (falcon9.addAstronaut(astronaut)) {
+    if (normandySr2.addAstronaut(astronaut)) {
         status_1 = "On board";
     }
     else {
@@ -21,16 +27,17 @@ for (var i = 0; i < crewRoster.length; i++) {
     console.log(astronaut.name + ": " + status_1);
 }
 var cargo = [
-    new Cargo_1.Cargo(3107.39, "Satellite"),
-    new Cargo_1.Cargo(1000.39, "Space Probe"),
-    new Cargo_1.Cargo(753, "Water"),
-    new Cargo_1.Cargo(541, "Food"),
-    new Cargo_1.Cargo(2107.39, "Tesla Roadster"),
+    new Cargo_1.Cargo(2107.39, "Armory"),
+    new Cargo_1.Cargo(1000.39, "Space Probes"),
+    new Cargo_1.Cargo(523, "Medical and Tech Supplies"),
+    new Cargo_1.Cargo(1153.12, "Consumables"),
+    new Cargo_1.Cargo(34, "Fish, Models, Personals"),
+    new Cargo_1.Cargo(1984.89, "UT-47 Kodiak"),
 ];
 for (var i = 0; i < cargo.length; i++) {
     var c = cargo[i];
     var loaded = '';
-    if (falcon9.addCargo(c)) {
+    if (normandySr2.addCargo(c)) {
         loaded = "Loaded";
     }
     else {
@@ -38,4 +45,4 @@ for (var i = 0; i < cargo.length; i++) {
     }
     console.log(c.material + ": " + loaded);
 }
-console.log("Final cargo and astronaut mass: " + falcon9.currentMassKg() + " kg.");
+console.log("Final cargo and crew mass: " + normandySr2.currentMassKg() + " kg.");

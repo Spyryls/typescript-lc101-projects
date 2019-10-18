@@ -1,13 +1,13 @@
 "use strict";
 exports.__esModule = true;
-var Rocket = /** @class */ (function () {
-    function Rocket(name, totalCapacityKg) {
-        this.cargoItems = [];
+var Ship = /** @class */ (function () {
+    function Ship(name, totalCapacityKg) {
+        this.cargoHold = [];
         this.crewRoster = [];
         this.name = name;
         this.totalCapacityKg = totalCapacityKg;
     }
-    Rocket.prototype.sumMass = function (items) {
+    Ship.prototype.sumMass = function (items) {
         // return items.reduce((sum, item) => sum + item.massKg, 0);
         var calculatedMass = 0;
         for (var i = 0; i < items.length; i++) {
@@ -15,19 +15,19 @@ var Rocket = /** @class */ (function () {
         }
         return calculatedMass;
     };
-    Rocket.prototype.currentMassKg = function () {
-        return this.sumMass(this.crewRoster) + this.sumMass(this.cargoItems);
+    Ship.prototype.currentMassKg = function () {
+        return this.sumMass(this.crewRoster) + this.sumMass(this.cargoHold);
     };
-    Rocket.prototype.canAdd = function (item) {
+    Ship.prototype.canAdd = function (item) {
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
             console.log("can add " + item.massKg + ", current mass: " + this.currentMassKg());
             return true;
         }
         console.log("cannot add " + item.massKg + ", current mass: " + this.currentMassKg());
     };
-    Rocket.prototype.addCargo = function (cargo) {
+    Ship.prototype.addCargo = function (cargo) {
         if (this.canAdd(cargo) === true) {
-            this.cargoItems.push(cargo);
+            this.cargoHold.push(cargo);
             console.log(cargo);
             return true;
         }
@@ -35,7 +35,7 @@ var Rocket = /** @class */ (function () {
             return false;
         }
     };
-    Rocket.prototype.addAstronaut = function (astronaut) {
+    Ship.prototype.addAstronaut = function (astronaut) {
         if (this.canAdd(astronaut) === true) {
             this.crewRoster.push(astronaut);
             return true;
@@ -44,6 +44,6 @@ var Rocket = /** @class */ (function () {
             return false;
         }
     };
-    return Rocket;
+    return Ship;
 }());
-exports.Rocket = Rocket;
+exports.Ship = Ship;
