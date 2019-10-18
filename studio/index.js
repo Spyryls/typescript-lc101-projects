@@ -4,13 +4,13 @@ var Astronaut_1 = require("./Astronaut");
 var Cargo_1 = require("./Cargo");
 var Rocket_1 = require("./Rocket");
 var falcon9 = new Rocket_1.Rocket('Falcon 9', 7500);
-var astronauts = [
+var crewRoster = [
     new Astronaut_1.Astronaut(75, 'Mae'),
     new Astronaut_1.Astronaut(81, 'Sally'),
     new Astronaut_1.Astronaut(99, 'Charles')
 ];
-for (var i = 0; i < astronauts.length; i++) {
-    var astronaut = astronauts[i];
+for (var i = 0; i < crewRoster.length; i++) {
+    var astronaut = crewRoster[i];
     var status_1 = '';
     if (falcon9.addAstronaut(astronaut)) {
         status_1 = "On board";

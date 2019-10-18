@@ -4,14 +4,14 @@ import { Rocket } from './Rocket';
 
 let falcon9: Rocket = new Rocket('Falcon 9', 7500);
 
-let astronauts: Astronaut[] = [
+let crewRoster: Astronaut[] = [
    new Astronaut(75, 'Mae'),
    new Astronaut(81, 'Sally'),
    new Astronaut(99, 'Charles')
 ];
 
-for (let i = 0; i < astronauts.length; i++) {
-   let astronaut = astronauts[i];
+for (let i = 0; i < crewRoster.length; i++) {
+   let astronaut = crewRoster[i];
    let status = '';
    if (falcon9.addAstronaut(astronaut)) {
       status = "On board";

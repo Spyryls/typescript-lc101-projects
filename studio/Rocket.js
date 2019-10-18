@@ -3,11 +3,12 @@ exports.__esModule = true;
 var Rocket = /** @class */ (function () {
     function Rocket(name, totalCapacityKg) {
         this.cargoItems = [];
-        this.astronauts = [];
+        this.crewRoster = [];
         this.name = name;
         this.totalCapacityKg = totalCapacityKg;
     }
     Rocket.prototype.sumMass = function (items) {
+        // return items.reduce((sum, item) => sum + item.massKg, 0);
         var calculatedMass = 0;
         for (var i = 0; i < items.length; i++) {
             calculatedMass += items[i].massKg;
@@ -15,7 +16,7 @@ var Rocket = /** @class */ (function () {
         return calculatedMass;
     };
     Rocket.prototype.currentMassKg = function () {
-        return this.sumMass(this.astronauts) + this.sumMass(this.cargoItems);
+        return this.sumMass(this.crewRoster) + this.sumMass(this.cargoItems);
     };
     Rocket.prototype.canAdd = function (item) {
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
@@ -36,7 +37,7 @@ var Rocket = /** @class */ (function () {
     };
     Rocket.prototype.addAstronaut = function (astronaut) {
         if (this.canAdd(astronaut) === true) {
-            this.astronauts.push(astronaut);
+            this.crewRoster.push(astronaut);
             return true;
         }
         else {
