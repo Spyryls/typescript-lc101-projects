@@ -1,6 +1,7 @@
 import { Payload } from './Payload';
 import { Cargo } from './Cargo';
 import { Astronaut } from './Astronaut';
+
 export class Ship {
     name: string;
     totalCapacityKg: number;
@@ -30,11 +31,11 @@ export class Ship {
             console.log(`can add ${item.massKg}, current mass: ${this.currentMassKg()}`)
             return true;    
         }
-        console.log(`cannot add ${item.massKg}, current mass: ${this.currentMassKg()}`)
+        console.log(`cannot add ${item.massKg}, current mass: ${this.currentMassKg()} exceeds weight limits`)
     }
 
     addCargo(cargo: Cargo): boolean {
-        if (this.canAdd(cargo) === true) {
+        if (this.canAdd(cargo)) {
             this.cargoHold.push(cargo);
             console.log(cargo);
             return true;
@@ -44,7 +45,7 @@ export class Ship {
     }
 
     addAstronaut(astronaut: Astronaut): boolean {
-        if (this.canAdd(astronaut) === true) {
+        if (this.canAdd(astronaut)) {
             this.crewRoster.push(astronaut);
             return true;
         } else {
