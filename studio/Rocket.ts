@@ -28,10 +28,10 @@ export class Ship {
 
     canAdd(item: Payload): boolean {
         if (this.currentMassKg() + item.massKg <= this.totalCapacityKg) {
-            console.log(`can add ${item.massKg}kg, current mass: ${this.currentMassKg()}kg`)
+            console.log(`Can add ${item.massKg}kg, current mass: ${this.currentMassKg()}kg`)
             return true;    
         }
-        console.log(`cannot add ${item.massKg}kg, current mass: ${this.currentMassKg()}kg exceeds weight limits`)
+        console.log(`Cannot add ${item.massKg}kg, current mass: ${this.currentMassKg()}kg exceeds weight limits`)
     }
 
     addCargo(cargo: Cargo): boolean {
